@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.myNav {
+  background-color: rgba(211, 47, 47, 1);
+  box-shadow: 0em 0.188em 0.438em 0em rgba(0, 0, 0, 0.3);
+}
+
+.form-size {
+  height: 60px;
+  width: 200px;
+}
+
+.form-control {
+  border-radius: 30px;
+  border: 0.313em solid rgba(211, 47, 47, 1);
+  box-shadow: inset 0em 0.188em 0.438em 0em rgba(0, 0, 0, 0.35);
+  font-family: 'Open Sans';
+  font-size: 17px;
+  color: black;
+  padding: 22px;
+  float: right;
+}
+.justify-content-center
+{
+  margin-left: 120px;
+}
+
+.s-btn button {
+  position: relative;
+  margin-left: -70px;
+  margin-top: -3px;
+  background: white;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+}
+
+.container-fluid h1{
+  width: 200px;
+  float: left;
+  font-family: 'Open Sans';
+  font-size: 35px;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.container-fluid h3{
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Open Sans';
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+a {
+  color: white;
+}

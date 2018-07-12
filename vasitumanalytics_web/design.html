@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="next1.js"></script>
+  <script type="text/javascript" src="SignOut.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="designStyle.css">
+</head>
+
+<body>
+  <div class="myNav">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+
+          <h1>Vasitum</h1>
+          <h3>Get Analytical List</h3>
+        </div>
+        <div class="row justify-content-center">
+          <input class="form-control form-size" type="date" id="startDate">
+          <button type="button" class="btn btn-primary btn-sm" onclick="showList()">Submit</button>&nbsp&nbsp
+          <button type="button" class="btn btn-primary btn-sm">
+            <a href="DatewiseNew.html">Get top poster</a>
+          </button>&nbsp&nbsp
+          <button type="button" class="btn btn-primary btn-sm" onclick="SignOut()">SignOut</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4" id="list">
+        <h3 class="p"></h3>
+        <div class="mydata"></div>
+      </div>
+
+
+      <div class="col-sm-4" id="list2">
+        <h3 class="p"></h3>
+        <div class="mydata"></div>
+      </div>
+
+
+      <div class="col-sm-4" id="list3">
+        <h3 class="p"></h3>
+        <div class="mydata"></div>
+      </div>
+
+      <div class="col-sm-4" id="list4">
+        <h3 class="p"></h3>
+        <div class="mydata"></div>
+      </div>
+
+      <div class="col-sm-4" id="list5">
+        <h3 class="p"></h3>
+        <div class="mydata"></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

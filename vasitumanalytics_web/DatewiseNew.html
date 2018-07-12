@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="next1.js"></script>
+    <script type="text/javascript" src="SignOut.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .myNav {
+            background-color: rgba(211, 47, 47, 1);
+            box-shadow: 0em 0.188em 0.438em 0em rgba(0, 0, 0, 0.3);
+        }
+
+        .form-size {
+            height: 60px;
+            width: 200px;
+        }
+
+        .form-control {
+            margin-top: 8px;
+            border-radius: 30px;
+            border: 0.313em solid rgba(211, 47, 47, 1);
+            box-shadow: inset 0em 0.188em 0.438em 0em rgba(0, 0, 0, 0.35);
+            font-family: 'Open Sans';
+            font-size: 17px;
+            color: black;
+            padding: 22px;
+            float: right;
+        }
+
+        .s-btn button {
+            position: relative;
+            margin-left: -70px;
+            margin-top: -3px;
+            background: white;
+            font-size: 26px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .container-fluid h1 {
+            width: 200px;
+            float: left;
+            font-family: 'Open Sans';
+            font-size: 35px;
+            color: rgba(255, 255, 255, 1);
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+
+        .container-fluid h3 {
+            color: rgba(255, 255, 255, 1);
+            font-family: 'Open Sans';
+            margin-top: 20px;
+        }
+
+        .btn {
+            height: 30px;
+            margin-top: 27px;
+        }
+
+        a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="myNav">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <h1>Vasitum</h1>
+                    <h3>Top Job Poster</h3>
+                </div>
+                <div class="row justify-content-center">
+                    <input class="form-control form-size" type="date" id="startDate">
+                    <input class="form-control form-size" type="date" id="endDate">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="check()">Submit</button>&nbsp&nbsp
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <a href="design.html">Get Analytical List</a>
+                    </button>&nbsp&nbsp
+                    <button type="button" class="btn btn-primary btn-sm" onclick="SignOut()">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        check = function () {
+            var d1 = new Date(document.getElementById("startDate").value).getTime();
+            var d2 = new Date(document.getElementById("endDate").value).getTime();
+            var token = localStorage.getItem("REST-AUTH-TOKEN");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    var response = JSON.parse(xhttp.responseText);
+                    console.log(response)
+                    document.getElementsByClassName("p")[0].innerHTML = "";
+                    document.getElementsByClassName("p")[0].innerHTML = response.msg;
+                    var ol = document.createElement("ul");
+                    ol.classList.add("list-group")
+                    for (var i = 0; i < response.infos.length; i++) {
+                        var li = document.createElement("li");
+                        li.classList.add("list-group-item")
+                        li.appendChild(document.createTextNode(response.infos[i].name));
+                        var mybr = document.createElement('br');
+                        li.appendChild(mybr);
+                        li.appendChild(document.createTextNode(response.infos[i].email));
+                        var mybr = document.createElement('br');
+                        li.appendChild(mybr);
+                        li.appendChild(document.createTextNode("Count :"));
+                        li.appendChild(document.createTextNode(response.infos[i].count));
+                        var mybr = document.createElement('br');
+                        ol.appendChild(mybr);
+                        ol.appendChild(li);
+                    }
+                    document.getElementsByClassName("mydata")[0].innerHTML = "";
+                    document.getElementsByClassName("mydata")[0].appendChild(ol)
+                }
+            };
+
+            xhttp.open("GET", "http://vasitumanalytics-server.herokuapp.com/v1/analytics/job/time/start/" +
+                d1 + "/end/" + d2 + "", true);
+            xhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+            xhttp.setRequestHeader("REST-AUTH-TOKEN", token);
+            xhttp.send();
+
+        }
+    </script>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            
+      <div class="col-sm-4" id="list">
+        <h3 class="p"></h3>
+        <div class="mydata"></div>
+      </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
